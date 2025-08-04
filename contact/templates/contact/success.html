@@ -1,0 +1,19 @@
+<!-- contact/templates/contact/success.html -->
+{% extends 'base.html' %}
+{% block body %}
+
+
+    <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" >
+            <div class="d-inline-flex mb-lg-5">
+        
+            </div>
+        </div>
+    </div>
+
+<div class="container py-5 text-center">
+    <h2 class="text-success mb-4">Thank you for contacting us!</h2>
+<p class="lead">Your message has been sent successfully. We will contact you as soon as possible.</p>
+    <a href="{% url 'home:home' %}" class="btn btn-primary mt-4">العودة للرئيسية</a>
+</div>
+{% endblock %}

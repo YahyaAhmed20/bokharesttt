@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+
+  <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" >
+            <div class="d-inline-flex mb-lg-5">
+        
+            </div>
+        </div>
+    </div>
+
+    
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="text-center">
+    <h2 class="mb-4">Thank you, {{ full_name }}! 🎉</h2>
+    <p class="lead">Your reservation has been submitted successfully. We’ll contact you shortly.</p>
+    <a href="{% url 'home:home' %}" class="btn btn-success mt-4">Back to Home</a>
+  </div>
+</div>
+
+{% endblock body %}

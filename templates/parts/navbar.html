@@ -1,0 +1,114 @@
+{% load static %}
+<div class="container-fluid p-0 nav-bar">
+    <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
+        <!-- شعار الموقع -->
+        <a href="/" class="navbar-brand px-lg-4 m-0 d-flex align-items-center">
+            <img src="{% static 'img/logo.png' %}" alt="Rayan Logo" 
+                 style="height: 40px; width: auto; margin-right: 10px; border-radius: 5px;">
+            <span class="brand-text">RAYAN LOUNGE</span>
+        </a>
+
+        <!-- زر التoggler (المنسدلة) - نضعه في الجهة اليمنى -->
+        <div class="ml-auto"> <!-- هذا يجعل الزر في الجهة اليمنى -->
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <!-- القائمة المنسدلة -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ml-auto p-4">
+                <a href="{% url 'home:home' %}" class="nav-item nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
+                
+                {% comment %} 
+                <a href="{% url 'about:about' %}" class="nav-item nav-link {% if request.path == '/about/' %}active{% endif %}">About</a>
+                <a href="{% url 'services:services' %}" class="nav-item nav-link {% if request.path == '/services/' %}active{% endif %}">Service</a>
+                {% endcomment %}
+
+                <a href="{% url 'menu:menu' %}" class="nav-item nav-link {% if request.path == '/menu/' %}active{% endif %}">Menu</a>
+                <a href="{% url 'contact:send_text' %}" class="nav-item nav-link {% if request.path == '/contact-us/' %}active{% endif %}">Contact</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<style>
+    .navbar-brand img {
+        transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover img {
+        transform: scale(1.1);
+    }
+
+    /* تنسيق النص الخاص بالشعار */
+    .brand-text {
+        font-size: 24px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: #fff;
+    }
+
+    /* إضافة تنسيقات إضافية للموبايل */
+    @media (max-width: 991px) {
+        .navbar-toggler {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            z-index: 1000; /* عشان يظهر فوق العناصر التانية */
+        }
+        
+        /* تقليل حجم النص في الموبايل */
+        .brand-text {
+            font-size: 20px; /* حجم أصغر في الموبايل */
+            height: 20px; /* تحديد الارتفاع */
+            display: flex;
+            align-items: center;
+        }
+
+        /* جعل العناصر في النص عند فتح الـ dropdown */
+        .navbar-collapse {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.9); /* خلفية للقائمة */
+            text-align: center; /* جعل العناصر في النص */
+            z-index: 999;
+        }
+
+        .navbar-nav {
+            flex-direction: column;
+            align-items: center; /* جعل العناصر في النص */
+            padding: 20px 0;
+        }
+
+        .navbar-nav .nav-item {
+            margin: 10px 0; /* مسافة بين العناصر */
+        }
+
+        .navbar-nav .nav-link {
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+
+        /* إزالة الـ margin من الـ container في الموبايل */
+        .navbar-collapse.show {
+            margin-top: 0;
+        }
+    }
+
+    /* تنسيقات الشاشات الكبيرة */
+    @media (min-width: 992px) {
+        .navbar-brand img {
+            height: 40px;
+        }
+        
+        .brand-text {
+            font-size: 24px;
+            height: auto;
+        }
+    }
+</style>
