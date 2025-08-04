@@ -26,23 +26,10 @@ SECRET_KEY = 'django-insecure-3v@2b2t8)kebe6$o9u2(gboi$8h^+^2(##ad=3s4*@i(#beoa*
 DEBUG = True
 
 # ALLOWED_HOSTS = ["web-production-1320c.up.railway.app","127.0.0.1", "localhost"]
-ALLOWED_HOSTS = [
-    "web-production-1320c.up.railway.app",
-    "127.0.0.1",
-    "localhost",
-    "www.rayan-co.com",
-    "rayan-co.com"
-]
+ALLOWED_HOSTS = ["*"]
 # ALLOWED_HOSTS = ["*"]
 # ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://web-production-1320c.up.railway.app",
-    "http://127.0.0.1",
-    "http://localhost",
-    "https://www.rayan-co.com",
-    "https://rayan-co.com"
-]
 
 
 
@@ -101,24 +88,24 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'eqQIJHISAJMRNRgRHAmTPiSaktPJSCjq',
-        'HOST': 'shinkansen.proxy.rlwy.net',  # ✅ استخدم الصحيح من Railway
-        'PORT': '19312',  # ✅ البورت الصحيح
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': 'eqQIJHISAJMRNRgRHAmTPiSaktPJSCjq',
+#         'HOST': 'shinkansen.proxy.rlwy.net',  # ✅ استخدم الصحيح من Railway
+#         'PORT': '19312',  # ✅ البورت الصحيح
+#     }
+# }
 
 
 # Password validation
