@@ -2,12 +2,71 @@
 {% load static %}
 {% block body %}
 
+<!-- Custom Dark/Gold Theme -->
+<style>
+    body {
+        background-color: #000; /* أسود */
+        color: #fff; /* أبيض للنص */
+    }
+    .text-primary {
+        color: #d4af37 !important; /* ذهبي */
+    }
+    .btn-primary {
+        background-color: #d4af37;
+        border-color: #d4af37;
+        color: #000;
+    }
+    .btn-primary:hover {
+        background-color: #bfa237;
+        border-color: #bfa237;
+    }
+    .form-control {
+        color: #fff;
+        border: 1px solid #d4af37;
+    }
+    .form-control::placeholder {
+        color: #ccc;
+    }
+    .form-control:focus {
+        border-color: #d4af37;
+        box-shadow: 0 0 5px #d4af37;
+    }
+</style>
+
 <!-- Page Header Start -->
-<div class="container-fluid page-header mb-5 position-relative overlay-bottom">
-    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-        <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase" data-aos="slide-down" data-aos-duration="1000">Contact</h1>
+<div class="container-fluid page-header mb-5 position-relative overlay-bottom"
+     style="border-radius: 10px; overflow: hidden; position: relative;">
+
+    <!-- الخلفية -->
+    <div style="
+        background-image: url('{% static 'img/petr-sevcovic-qE1jxYXiwOA-unsplash.jpg' %}');
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 1;
+    "></div>
+
+    <!-- التغميق -->
+    <div style="
+        background: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 2;
+    "></div>
+
+    <!-- المحتوى -->
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
+         style="min-height: 400px; position: relative; z-index: 3;">
+        
+        <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-uppercase text-white" data-aos="slide-down" data-aos-duration="1000"
+            style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
+            Contact
+        </h1>
         <div class="d-inline-flex mb-lg-5" data-aos="fade-left" data-aos-delay="200">
-            <p class="m-0 text-white"><a class="text-white" href="{% url 'home:home' %}">Home</a></p>
+            <p class="m-0 text-white">
+                <a class="text-white" href="{% url 'home:home' %}">Home</a>
+            </p>
             <p class="m-0 text-white px-2">/</p>
             <p class="m-0 text-white">Contact</p>
         </div>
@@ -22,11 +81,11 @@
         <!-- Title -->
         <div class="section-title" data-aos="zoom-in-down" data-aos-duration="800">
             <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Contact Us</h4>
-            <h1 class="display-4">Feel Free To Contact</h1>
+            <h1 class="display-4 text-white">Feel Free To Contact</h1>
         </div>
 
         <!-- Info Boxes -->
-        <div class="row px-3 pb-2">
+        <div class="row px-3 pb-2 text-white">
             <div class="col-sm-4 text-center mb-3" data-aos="fade-up" data-aos-delay="100">
                 <i class="fa fa-2x fa-map-marker-alt mb-3 text-primary"></i>
                 <h4 class="font-weight-bold">Address</h4>
@@ -35,17 +94,12 @@
             <div class="col-sm-4 text-center mb-3" data-aos="fade-up" data-aos-delay="200">
                 <i class="fa fa-2x fa-phone-alt mb-3 text-primary"></i>
                 <h4 class="font-weight-bold">Phone</h4>
-                            <p>
+                <p>
                     <a href="https://wa.me/201010404808" class="text-success" target="_blank" style="font-weight: bold;">
                         <i class="fab fa-whatsapp"></i>01010404808
-
                     </a>
                 </p>
-
-
-
             </div>
-        
         </div>
 
         <!-- Map + Form -->

@@ -2,30 +2,37 @@
 {% load static %}
 {% block body %}
 
-    <!-- Page Header Start -->
-<div class="container-fluid page-header mb-5 position-relative overlay-bottom">
-    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-        <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase" data-aos="fade-down">{{ category.name }}</h1>
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-0 position-relative overlay-bottom"
+     style="background: url('{% static 'img/petr-sevcovic-qE1jxYXiwOA-unsplash.jpg' %}') center center / cover no-repeat; background-color: #040303;">
+    
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
+         style="min-height: 400px; background: rgba(0, 0, 0, 0.6); border-radius: 10px;">
+        
+        <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-uppercase text-gold text-shadow" data-aos="fade-down">
+            {{ category.name }}
+        </h1>
+
         <div class="d-inline-flex mb-lg-5" data-aos="fade-up">
-            <p class="m-0 text-white"><a class="text-white" href="{% url 'home:home' %}">Home</a></p>
-            <p class="m-0 text-white px-2">/</p>
-            <p class="m-0 text-white"><a class="text-white" href="{% url 'menu:menu' %}">Menu</a></p>
-            
-            <p class="m-0 text-white px-2">/</p>
-            <p class="m-0 text-white">{{ category.name }}</p>
+            <p class="m-0 text-white text-shadow"><a class="text-white" href="{% url 'home:home' %}">Home</a></p>
+            <p class="m-0 text-white px-2 text-shadow">/</p>
+            <p class="m-0 text-white text-shadow"><a class="text-white" href="{% url 'menu:menu' %}">Menu</a></p>
+            <p class="m-0 text-white px-2 text-shadow">/</p>
+            <p class="m-0 text-white text-shadow">{{ category.name }}</p>
         </div>
+        
     </div>
 </div>
-    <!-- Page Header End -->
+<!-- Page Header End -->
 
-    <!-- Category Items Start -->
-<div class="container-fluid pt-5">
+<!-- Category Items Start -->
+<div class="container-fluid pt-5" style="background-color: #040303;">
     <div class="container">
         <div class="section-title text-center mb-5" data-aos="fade-up">
-            <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">{{ category.name }}</h4>
-            <h1 class="display-4">Delicious Selection</h1>
+            <h4 class="text-gold text-uppercase text-shadow" style="letter-spacing: 5px;">{{ category.name }}</h4>
+            <h1 class="display-4 text-shadow text-gold">Delicious Selection</h1>
             {% if category.description %}
-            <p class="text-muted mt-3">{{ category.description }}</p>
+            <p class="text-muted mt-3 text-shadow">{{ category.description }}</p>
             {% endif %}
         </div>
 
@@ -39,87 +46,94 @@
                         <img src="{{ item.image.url }}" alt="{{ item.name }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
                     </div>
                     {% endif %}
-                    <div class="menu-item-details flex-grow-1">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="mb-1 text-dark font-weight-bold">{{ item.name }}</h5>
-                            <h5 class="mb-0 text-primary font-weight-bold">{{ item.price }} EGP</h5>
-                        </div>
-                        {% if item.description %}
-                        <p class="mb-2 text-muted small">{{ item.description|truncatewords:15 }}</p>
-                        {% endif %}
-                        <div class="mt-2">
-                            {% if item.is_available %}
-                            <span class="badge bg-success">Available</span>
-                            {% else %}
-                            <span class="badge bg-danger">Not Available</span>
-                            {% endif %}
-                        </div>
-                    </div>
+                    <div class="menu-item-details flex-grow-1 d-flex flex-column justify-content-between">
+    <div>
+        <div class="d-flex justify-content-between">
+            <h5 class="mb-1 text-light font-weight-bold text-shadow">{{ item.name }}</h5>
+            <h5 class="mb-0 text-gold font-weight-bold text-shadow">{{ item.price }} EGP</h5>
+        </div>
+        {% if item.description %}
+        <p class="mb-2 text-muted small text-shadow">{{ item.description|truncatewords:15 }}</p>
+        {% endif %}
+        <div class="mt-2 mb-2">
+            {% if item.is_available %}
+            <span class="badge bg-success text-shadow">Available</span>
+            {% else %}
+            <span class="badge bg-danger text-shadow">Not Available</span>
+            {% endif %}
+        </div>
+    </div>
+    <div class="text-right">
+<a href="{% url 'menu:order_summary' item.id %}" class="btn btn-sm btn-gold mt-2 px-4">Book Now</a>
+    </div>
+</div>
                 </div>
             </div>
             {% endfor %}
         </div>
         {% else %}
         <div class="text-center py-5">
-            <h3 class="text-muted">No items available in this category.</h3>
-            <p class="text-muted">Check out our other delicious categories!</p>
-            <a href="{% url 'menu:menu' %}" class="btn btn-primary">Browse All Categories</a>
+            <h3 class="text-light text-shadow">No items available in this category.</h3>
+            <p class="text-muted text-shadow">Check out our other delicious categories!</p>
+            <a href="{% url 'menu:menu' %}" class="btn btn-gold">Browse All Categories</a>
         </div>
         {% endif %}
     </div>
 </div>
-
-
 <!-- Category Items End -->
 
 <style>
+    body {
+        background-color: #040303;
+    }
+
     .hover-item {
         transition: all 0.3s ease;
-        border-color: #eee !important;
+        border-color: #222 !important;
     }
-    
+
     .hover-item:hover {
         transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
-        border-color: #ddd !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
+        border-color: #444 !important;
     }
-    
+
     .menu-item-card {
-        background: #fff;
+        background: #0d0d0d;
+        color: #fff;
     }
-    
-    .section-title h1 {
-        color: #333;
+
+    .text-gold {
+        color: #d4af37 !important;
     }
-    
-    .text-primary {
-        color: #E74C3C !important;
+
+    .btn-gold {
+        background-color: #d4af37;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 30px;
+        transition: all 0.3s ease;
     }
-    
+
+    .btn-gold:hover {
+        background-color: #cfa22f;
+        color: #000;
+    }
+
+    .text-shadow {
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    }
+
     .badge {
         font-size: 0.7rem;
     }
-
-
-.btn-danger {
-    background-color: #E74C3C;
-    border: none;
-}
-
-.btn-danger:hover {
-    background-color: #c0392b;
-    color: #fff;
-}
-
-.btn {
-    transition: all 0.3s ease-in-out;
-}
-
 </style>
 
 <div class="text-center mt-5 mb-4" data-aos="fade-up">
-    <a href="{% url 'menu:menu' %}" class="btn btn-lg btn-danger px-5 py-2 rounded-pill shadow">
+    <a href="{% url 'menu:menu' %}" class="btn btn-lg btn-gold px-5 py-2 rounded-pill shadow">
         ⬅️ Back to Menu
     </a>
 </div>
+
 {% endblock body %}

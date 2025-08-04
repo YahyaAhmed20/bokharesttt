@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, MenuItem
+from .models import Category, MenuItem,Order
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'order')          # نعرض الاسم والترتيب
@@ -13,3 +13,7 @@ class MenuItemAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(MenuItem, MenuItemAdmin)
+
+
+
+admin.site.register(Order)

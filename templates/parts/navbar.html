@@ -3,9 +3,9 @@
     <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
         <!-- شعار الموقع -->
         <a href="/" class="navbar-brand px-lg-4 m-0 d-flex align-items-center">
-            <img src="{% static 'img/logo.png' %}" alt="Rayan Logo" 
+            <img src="{% static 'img/logo2.jpeg' %}" alt="Rayan Logo" 
                  style="height: 40px; width: auto; margin-right: 10px; border-radius: 5px;">
-            <span class="brand-text">RAYAN LOUNGE</span>
+            <span class="brand-text">Boخarest Caffe</span>
         </a>
 
         <!-- زر التoggler (المنسدلة) - نضعه في الجهة اليمنى -->
@@ -69,14 +69,15 @@
 
         /* جعل العناصر في النص عند فتح الـ dropdown */
         .navbar-collapse {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            left: 0;
-            background: rgba(0, 0, 0, 0.9); /* خلفية للقائمة */
-            text-align: center; /* جعل العناصر في النص */
-            z-index: 999;
-        }
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background-color: #000 !important; /* ← لون أسود صريح */
+    text-align: center;
+    z-index: 999;
+}
+
 
         .navbar-nav {
             flex-direction: column;
@@ -97,6 +98,7 @@
         /* إزالة الـ margin من الـ container في الموبايل */
         .navbar-collapse.show {
             margin-top: 0;
+            
         }
     }
 
@@ -110,5 +112,17 @@
             font-size: 24px;
             height: auto;
         }
+
+
     }
+
+
+    .nav-bar {
+    background-color: #000 !important;
+}
+
+.navbar {
+    background-color: #000 !important;
+}
+
 </style>

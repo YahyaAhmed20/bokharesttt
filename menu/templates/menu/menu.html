@@ -2,25 +2,55 @@
 {% load static %}
 {% block body %}
 
-    <!-- Page Header Start -->
-<div class="container-fluid page-header mb-5 position-relative overlay-bottom">
-    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-        <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase" data-aos="fade-down">Our Menu Categories</h1>
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5 position-relative overlay-bottom"
+     style="border-radius: 10px; overflow: hidden; position: relative;">
+    
+    <!-- الخلفية -->
+    <div style="
+        background-image: url('{% static 'img/petr-sevcovic-qE1jxYXiwOA-unsplash.jpg' %}');
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 1;
+    "></div>
+
+    <!-- التغميق -->
+    <div style="
+        background: rgba(0, 0, 0, 0.52);
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 2;
+    "></div>
+
+    <!-- المحتوى -->
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
+         style="min-height: 400px; position: relative; z-index: 3;">
+        
+        <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-uppercase text-gold" data-aos="fade-down"
+            style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
+            Our Menu Categories
+        </h1>
         <div class="d-inline-flex mb-lg-5" data-aos="fade-up">
-            <p class="m-0 text-white"><a class="text-white" href="{% url 'home:home' %}">Home</a></p>
+            <p class="m-0 text-white">
+                <a class="text-white" href="{% url 'home:home' %}">Home</a>
+            </p>
             <p class="m-0 text-white px-2">/</p>
-            <p class="m-0 text-white"> <a class="text-white" href="{% url 'menu:menu' %}">menu</a></p>
+            <p class="m-0 text-white">
+                <a class="text-white" href="{% url 'menu:menu' %}">menu</a>
+            </p>
         </div>
     </div>
 </div>
-    <!-- Page Header End -->
+<!-- Page Header End -->
 
-    <!-- Categories Start -->
-<div class="container-fluid pt-5">
-    <div class="container">
+<!-- Categories Start -->
+<div class="container-fluid pt-0" style="background: #040303;">
+    <div class="container py-5">
         <div class="section-title text-center mb-5" data-aos="fade-up">
-            <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Browse Our Categories</h4>
-            <h1 class="display-4">Choose Your Category</h1>
+            <h4 class="text-gold text-uppercase" style="letter-spacing: 5px; text-shadow: 1px 1px 3px rgba(0,0,0,0.7);">Browse Our Categories</h4>
+            <h1 class="display-4 text-gold" style="text-shadow: 1px 1px 5px rgba(0,0,0,0.9);">Choose Your Category</h1>
             <p class="text-muted mt-3">Click on any category to explore delicious items</p>
         </div>
 
@@ -29,7 +59,7 @@
             {% for category in categories %}
             <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
                 <a href="{% url 'menu:category_items' category.id %}" class="category-card text-decoration-none">
-                    <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card h-100 border-0 shadow-sm hover-card bg-dark text-white">
                         {% if category.image %}
                         <img src="{{ category.image.url }}" class="card-img-top" alt="{{ category.name }}" style="height: 400px; width: 100%; object-fit: cover;">
                         {% else %}
@@ -38,13 +68,10 @@
                         </div>
                         {% endif %}
                         <div class="card-body text-center">
-                            <h3 class="card-title text-primary mb-2">{{ category.name }}</h3>
+                            <h3 class="card-title text-gold mb-2" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.7);">{{ category.name }}</h3>
                             {% if category.description %}
                             <p class="card-text text-muted small">{{ category.description|truncatewords:10 }}</p>
                             {% endif %}
-                            <div class="mt-3">
-                             
-                            </div>
                         </div>
                     </div>
                 </a>
@@ -66,33 +93,33 @@
         display: block;
         transition: all 0.3s ease;
     }
-    
+
     .category-card:hover .hover-card {
         transform: translateY(-10px);
         box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
     }
-    
+
     .hover-card {
         transition: all 0.3s ease;
         border-radius: 10px;
         overflow: hidden;
     }
-    
+
+    .text-gold {
+        color: #d4af37 !important;
+    }
+
     .card-title {
         font-weight: 600;
         letter-spacing: 1px;
     }
-    
-    .badge {
-        font-size: 0.8rem;
-    }
-    
+
     .section-title h1 {
-        color: #333;
+        font-weight: bold;
     }
-    
-    .text-primary {
-        color: #E74C3C !important;
+
+    body {
+        background-color: #040303;
     }
 </style>
 
