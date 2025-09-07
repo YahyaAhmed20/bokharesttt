@@ -1,10 +1,9 @@
-from django.http import JsonResponse
+ده views بتاعي from django.http import JsonResponse
 from django.shortcuts import render,get_object_or_404
 from .models import Category,MenuItem
 from django.shortcuts import redirect
 from .forms import OrderForm
-import requests
-from django.utils import timezone
+
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
@@ -98,18 +97,6 @@ def update_item(request, item_id):
     return redirect('menu:cart')
 
 
-
-
-
-
-def send_telegram_message(message):
-    bot_token = '8339380550:AAHWQy5LMU68zQibllKJ9AlH0x8Gdei6BKg'
-    chat_id = '1028452911'  # ده الـ chat_id بتاعك
-    url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
-    payload = {'chat_id': chat_id, 'text': message}
-    requests.post(url, data=payload)
-
-
 def complete_order(request):
     cart = request.session.get('cart', [])
     total_price = sum(item['total'] for item in cart)
@@ -126,23 +113,6 @@ def complete_order(request):
             )
             order.total_price = total_price
             order.save()
-
-            # 🟢 إشعار Telegram
-            send_telegram_message(
-                f'''📦 طلب جديد من موقع Bucharest Café
-
-👤 الاسم: {order.name}
-📞 رقم الموبايل: {order.phone}
-📍 العنوان: {order.address}
-🧾 العناصر:
-{order.items}
-
-💰 الإجمالي: {order.total_price} ج.م
-🕒 الوقت: {timezone.now().strftime("%Y-%m-%d %H:%M")}
-
-راجع الطلب من لوحة التحكم 🔧
-                '''
-            )
 
             request.session['cart'] = []
             request.session.modified = True
