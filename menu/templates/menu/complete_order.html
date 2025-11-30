@@ -85,13 +85,15 @@
         color: #aaa !important;
     }
     
+    /* ✅ عناوين متجاوبة */
     h2 {
-        font-size: 2.5rem;
-        margin-bottom: 2rem !important;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        margin-bottom: 1.5rem !important;
+        line-height: 1.2;
     }
     
     h5 {
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 3.5vw, 1.5rem);
         font-weight: bold;
     }
     
@@ -117,44 +119,75 @@
         font-size: 14px;
         margin-left: 5px;
     }
+
+    /* ✅ متجاوب للموبايل */
+    @media (max-width: 575.98px) {
+        .form-control, .form-select, textarea {
+            padding: 10px 12px !important;
+            font-size: 16px !important; /* ⚠️ مهم لمنع zoom في iOS */
+        }
+        
+        .custom-label {
+            font-size: 15px !important;
+        }
+        
+        .btn-gold {
+            font-size: 16px !important;
+            padding: 0.75rem 1.25rem !important;
+        }
+    }
+
+    /* ✅ حماية لجميع العناوين */
+    .page-title {
+        position: relative;
+        z-index: 10;
+    }
 </style>
 
-<div class="container py-5">
-    <h2 class="mb-4 text-center text-gold text-shadow">✅ Complete Your Order</h2>
+<!-- ✅ container متجاوب -->
+<div class="container-sm px-3 px-md-4 py-4 py-md-5">
+    <h2 class="text-center text-gold text-shadow page-title">✅ Complete Your Order</h2>
 
-    <form method="post" class="bg-dark p-5 rounded shadow">
-        {% csrf_token %}
-        
-        <div class="form-group">
-            <label class="custom-label">📛 Name</label>
-            {{ form.name }}
-        </div>
-        
-        <div class="form-group">
-            <label class="custom-label">📍 Address</label>
-            {{ form.address }}
-        </div>
-        
-        <div class="form-group">
-            <label class="custom-label">📞 Phone</label>
-            {{ form.phone }}
-        </div>
-        
-        <div class="form-group">
-            <label class="custom-label">🏠 Landmark</label>
-            {{ form.landmark }}
-        </div>
-        
-        <div class="form-group">
-            <label class="custom-label">🚚 Delivery Method</label>
-            {{ form.delivery_method }}
-        </div>
+    <!-- ✅ form محدود العرض + متجاوب -->
+    <form method="post" 
+          class="bg-dark rounded shadow mx-auto"
+          style="max-width: 600px;">
+        <div class="p-4 p-md-5">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label class="custom-label">📛 Name</label>
+                {{ form.name }}
+            </div>
+            
+            <div class="form-group">
+                <label class="custom-label">📍 Address</label>
+                {{ form.address }}
+            </div>
+            
+            <div class="form-group">
+                <label class="custom-label">📞 Phone</label>
+                {{ form.phone }}
+            </div>
+            
+            <div class="form-group">
+                <label class="custom-label">🏠 Landmark</label>
+                {{ form.landmark }}
+            </div>
+            
+            <div class="form-group">
+                <label class="custom-label">🚚 Delivery Method</label>
+                {{ form.delivery_method }}
+            </div>
 
-        <hr class="text-gold">
-        <h5 class="text-gold text-center">💰 Total: {{ total_price }} EGP</h5>
+            <hr class="text-gold">
+            <h5 class="text-gold text-center">💰 Total: {{ total_price }} EGP</h5>
 
-        <div class="text-center mt-4">
-            <button type="submit" class="btn btn-gold px-5 py-3">📦 Submit Order</button>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-gold w-100 w-md-auto px-4 py-3">
+                    📦 Submit Order
+                </button>
+            </div>
         </div>
     </form>
 </div>
