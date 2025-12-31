@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = [
     # "https://web-production-1320c.up.railway.app",
     "https://bokhares-production.up.railway.app",
+    "https://bokharesss-production.up.railway.app",
 ]
 
 
