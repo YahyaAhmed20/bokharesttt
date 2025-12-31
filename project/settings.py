@@ -26,16 +26,17 @@ SECRET_KEY = 'django-insecure-3v@2b2t8)kebe6$o9u2(gboi$8h^+^2(##ad=3s4*@i(#beoa*
 DEBUG = True
 
 # ALLOWED_HOSTS = ["web-production-1320c.up.railway.app","127.0.0.1", "localhost"]
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
-
-CSRF_TRUSTED_ORIGINS = [
-    # "https://web-production-1320c.up.railway.app",
-    "https://bokhares-production.up.railway.app",
-    "https://bokharesss-production.up.railway.app",
+ALLOWED_HOSTS = [
+    "bokharest.up.railway.app",
+    ".up.railway.app",
+    "127.0.0.1",
+    "localhost",
 ]
 
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://bokharest.up.railway.app",
+]
 
 
 # Application definition
